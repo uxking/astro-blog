@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { Icon } from 'astro-icon/components'
+---
+
+<Layout title='Hayslip.info'>
+  <div
+    class='flex items-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-6 roudned-lg mx-auto max-w-3xl p-4 w-2/5 lg:w-full'
+  >
+    <div>
+      <div class='flex flex-col lg:flex-row items-center'>
+        <p class='mb-2 text-2xl font-semibold text-black mt-8'>
+          <a href='/' rel='author'>Mike Hayslip</a>
+        </p>
+      </div>
+      <div class='flex gap-4 mx-auto items-center flex-col lg:flex-row'>
+        <img
+          class='object-cover w-20 h-20 mt-3 mr-3 rounded-full'
+          src='/mike.JPG'
+        />
+        <img class='h-16 w-auto' src='/cissp.png' />
+        <img class='h-16 w-auto' src='/GSEC.png' />
+        <img class='h-16 w-auto' src='/AWS-Badge.png' />
+      </div>
+
+      <p class='pt-4'>
+        I've been in tech for over 25 years. Currently I do InfoSec for a
+        Fortune 300 company.
+      </p>
+
+      <div class='pt-8'>
+        <h2 class='text-sm lg:text-xl font-semibold'>My Favorite Things</h2>
+        <ul class='list-disc p-6'>
+          <li>Technology 🤖 (InfoSec, Containers, Kubernetes, Cloud...)</li>
+          <li>Photography 📷 (Landscapes and Portraits mostly)</li>
+          <li>Gaming 🎮 (PS5 and PC)</li>
+          <li>Embedded systems (Atmel ATmega328, Microchip PIC, ESP32)</li>
+          <li>
+            Coding (Javascript, C, C++, Java, Python, Bash, PowerShell...)
+          </li>
+          <li>Anything Star Trek 🖖 and most anything SciFi 🚀👽</li>
+        </ul>
+
+        <h2 class='text-sm lg:text-xl font-semibold pt-4'>Things I've Done</h2>
+        <ul class='list-disc p-6'>
+          <li>
+            I have served as Infrastructure Manager for two of the world’s top
+            semiconductor manufacturing companies.
+          </li>
+          <li>
+            Held the position of Global Information Security Manager at one of
+            the valley’s leading companies.
+          </li>
+          <li>Was an AWS Solutions Architect for bit.</li>
+          <li>
+            Did some work as a travelling Security Consultant for Hewlett
+            Packard Enterprise (HPE).
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</Layout>

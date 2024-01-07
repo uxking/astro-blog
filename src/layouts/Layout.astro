@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string | 'Hayslip.info'
+}
+
+const { title } = Astro.props
+
+import Footer from '../components/Footer.astro'
+import Header from '../components/Header.astro'
+import Main from '../components/Main.astro'
+import { ViewTransitions } from 'astro:transitions'
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='description' content='Astro description' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/computer-programmer.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class='text-lg'>
+    <ViewTransitions />
+    <Header />
+    <Main>
+      <slot />
+    </Main>
+    <Footer />
+  </body>
+</html>

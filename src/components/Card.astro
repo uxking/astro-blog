@@ -1,0 +1,61 @@
+---
+import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
+import { type CollectionEntry } from 'astro:content'
+import Tags from './Tags.astro'
+import { getShortDate } from '../utils/date_utils'
+interface Props {
+  post: CollectionEntry<'posts'>
+}
+
+const { post } = Astro.props
+---
+
+<div
+  class='max-w-xs md:max-w-4xl mx-auto items-center p-6 md:p-12 mb-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100'
+>
+  <div class='flex gap-2 md:gap-4'>
+    <Icon
+      name='mdi:bookmark'
+      class='h-4 md:h-8 w-auto mb-2 text-2xl font-bold tracking-tight text-gray-900'
+    />
+
+    <a href=`/blog/${post.slug}`>
+      <h1
+        class='mb-2 md:mb-4 text-xs md:text-2xl font-bold tracking-tight text-gray-900'
+      >
+        {post.data.title}
+      </h1>
+    </a>
+  </div>
+  <div>
+    {
+      post.data.image && (
+        <a href={`/blog/${post.slug}`}>
+          <Image
+            src={post.data.image}
+            alt={post.data.alt}
+            format='webp'
+            class='rounded-md mb-2 md:mb-4'
+          />
+        </a>
+      )
+    }
+    <Tags post={post} />
+  </div>
+
+  <p class='mb-3 font-normal text-slate-700 line-clamp-2'>
+    {post.data.description}
+  </p>
+  <a
+    href=`/blog/${post.slug}`
+    class='inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white bg-slate-700 rounded-lg hover:bg-slate-400 focus:ring-4 focus:outline-none focus:ring-slate-300 md:text-sm'
+  >
+    Read more
+  </a>
+  <div class='float-right text-xs md:text-lg'>
+    Published: <span class='mx-auto font-semibold'
+      >{getShortDate(post.data.date)}</span
+    >
+  </div>
+</div>

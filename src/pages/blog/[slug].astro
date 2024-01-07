@@ -1,0 +1,45 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content'
+import Layout from '../../layouts/Layout.astro'
+import Tags from '../../components/Tags.astro'
+import { Image } from 'astro:assets'
+import { getShortDate } from '../../utils/date_utils'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts')
+  return posts.map((post) => {
+    return {
+      params: { slug: post.slug },
+      props: { post },
+    }
+  })
+}
+type Props = {
+  post: CollectionEntry<'posts'>
+}
+const { post } = Astro.props
+const { Content } = await post.render()
+---
+
+<Layout title={post.data.title}>
+  <article
+    class='prose prose-code:text-orange-400 px-10 max-w-sm md:max-w-xl lg:max-w-5xl text-xs md:text-sm lg:text-lg'
+  >
+    {
+      post.data.image && (
+        <Image src={post.data.image} alt={post.data.alt} format='webp' />
+      )
+    }
+    <Tags post={post} />
+    <div
+      class='text-xs md:text-sm lg:text-lg flex flex-row gap-2 text-slate-400'
+    >
+      <div class='mb-4'>
+        Published: <span class='mx-auto font-semibold'
+          >{getShortDate(post.data.date)}</span
+        >
+      </div>
+    </div>
+    <Content />
+  </article>
+</Layout>

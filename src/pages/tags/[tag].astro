@@ -1,0 +1,65 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '../../layouts/Layout.astro'
+import Tags from '../../components/Tags.astro'
+import { getShortDate } from '../../utils/date_utils'
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('posts')
+  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags.includes(tag),
+    )
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    }
+  })
+}
+
+const { tag } = Astro.params
+const { posts } = Astro.props
+---
+
+<Layout title={tag}>
+  <div class='mx-auto flex flex-col gap-2'>
+    <div
+      class='font-semibold px-6 flex flex-col gap-2 md:flex-row items-center text-xs md:text-sm lg:text-lg'
+    >
+      Posts tagged with <span
+        class='bg-slate-500 text-slate-200 rounded-md px-4 py-1.5 mx-2'
+        >{tag}</span
+      >
+      <a
+        href='/tags'
+        class='mx-4 px-4 py-2.5 leading-none hover:text-slate-200 font-medium text-center text-white bg-slate-700 rounded-lg hover:bg-slate-400 focus:ring-4 focus:outline-none focus:ring-slate-300'
+      >
+        all tags
+      </a>
+    </div>
+
+    {
+      posts.map((post) => (
+        <div class='px-4 py-4 mx-5 font-normal bg-slate-200 rounded-lg text-sm md:text-lg'>
+          <div class='flex flex-col justify-between md:flex-row'>
+            <h3 class='mb-2 text-sm md:text-2xl font-semibold leading-snug'>
+              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            </h3>
+          </div>
+          <p class='text-slate-700 line-clamp-2'>{post.data.description}</p>
+          <div class='p-2'>
+            <Tags post={post} />
+          </div>
+          <div class='float-right text-xs md:text-lg'>
+            Published:{' '}
+            <span class='mx-auto font-semibold'>
+              {getShortDate(post.data.date)}
+            </span>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Layout>

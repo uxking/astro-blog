@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import Card from './Card.astro'
+
+type Props = {
+  posts: CollectionEntry<'posts'>[]
+}
+
+const { posts } = Astro.props
+---
+
+<div>
+  {posts.map((post) => <Card post={post} />)}
+</div>

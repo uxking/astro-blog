@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '../layouts/Layout.astro'
+
+// Get all entries from a collection.
+// Requires the name of the collection as an argument.
+// Example: retrieve `src/content/blog/**`
+const allBlogPosts = await getCollection('posts')
+
+const uniqueTags = [
+  ...new Set(allBlogPosts.map((post) => post.data.tags).flat()),
+]
+console.log(uniqueTags)
+---
+
+<Layout title='All Tags'>
+  <div class='mx-auto'>
+    <h2 class='flex flex-row flex-nowrap items-center mt-24'>
+      <span class='flex-grow block border-t border-black'></span>
+      <span
+        class='flex-none block mx-4 px-4 py-2.5 text-md rounded leading-none font-medium bg-slate-800 text-slate-200'
+      >
+        all tags
+      </span>
+      <span class='flex-grow block border-t border-black'></span>
+    </h2>
+
+    <div
+      class='tag-cloud flex justify-center flex-wrap gap-2 p-4 max-w-sm mx-auto my-4'
+    >
+      {
+        uniqueTags.map((tag) => (
+          <a href={`/tags/${tag}`} class='tag px-2 py-1 rounded bg-slate-200 text-slate-700 text-sm hover:bg-slate-300 focus:ring-4 focus:outline-none focus:ring-slate-300'>
+              {tag}
+            </a>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,128 @@
+---
+title: Markdown Sample File
+author: Michael Hayslip
+date: 2024-01-07
+tags: ['markdown', 'technology']
+description: This is a sample markdown file for reference. Shows how items will look on the page using Markdown or MDX. 
+image: ./images/big-sample-data-center.png
+alt: Data Center Image
+
+---
+# h1 header
+
+Paragraphs are separated by a blank line.
+
+2nd paragraph. *Italic*, **bold**, and `monospace`. Itemized lists
+look like:
+
+  * this one
+  * that one
+  * the other one
+
+Note that --- not considering the asterisk --- the actual text
+content starts at 4-columns in.
+
+> Block quotes are
+> written like so.
+>
+> They can span multiple paragraphs,
+> if you like.
+
+Use 2 dashes for and em dash or ranges (ex., "it's all
+in chapters 12--14"). Unicode is supported. ☺
+
+
+## h2 header
+
+Here's a numbered list:
+
+ 1. first item
+ 2. second item
+ 3. third item
+
+Here's a code sample:
+
+    ### Let me re-iterate ...
+    `for i in 1 .. 10 { do-something(i) }`
+
+You can also do delimited blocks:
+Use three backticks \`\`\` and the name the language, such as javascript, bash, python, etc...
+>Javascript
+```javascript
+define foobar() {
+    print "Welcome to flavor country!";
+}
+```
+>Python
+```python
+import time
+# Quick, count to ten!
+for i in range(10):
+    # (but not *too* quick)
+    time.sleep(0.5)
+    print i
+```
+
+
+
+### h3 header 
+
+Now a nested list:
+
+ 1. First, get these ingredients:
+
+      * carrots
+      * celery
+      * lentils
+
+ 2. Boil some water.
+
+ 3. Dump everything in the pot and follow
+    this recipe:
+
+        * simmer for 20 min
+        * Remove from heat
+        * Let cool for 10 min
+        * Enjoy
+
+    Add salt and pepper to taste.
+
+Here's a link to [a website](http://example.com) and to a [section heading in the current
+doc](#h2-header). Here's a footnote [^1].
+
+
+
+Tables can look like this:
+
+|size| material    |  color       |
+| -- | ----------- |  ----------- | 
+| L  |  cotton     |  brown       |
+| S  |  cotton-poly blend |  green     |
+| XL |   denim     |  blue |
+<div class="text-xs">Table Caption</div>
+
+(The above is the caption for the table.) In MDX use `<div class="whatever style you want">Caption</div>` 
+
+You can also do multi-line tables with `<br />`:
+
+|keyword   | text                 |
+|--------  | -----------------------|
+|red       |Sunsets, apples, and other red <br />or reddish things.                  |
+|green     |Leaves, grass, frogs and other <br />things it's not easy being.         |
+
+
+A horizontal rule with `***`.
+
+***
+
+
+Images can be specified like so:
+
+`![example image](./images/image-name.png "A datacenter image")`
+
+![example image](./images/big-sample-data-center.png "An datacener image")
+
+And note that you can backslash-escape any punctuation characters
+which you wish to be displayed literally, ex.: \`foo\`, \*bar\*, etc.
+
+[^1]: Footnote text goes here.

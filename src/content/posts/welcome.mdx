@@ -1,0 +1,45 @@
+---
+title: "Welcome to my Blog"
+author: Michael Hayslip
+date: 2024-01-05
+tags: ['welcome', 'Astro']
+description: Welcome to my blog. I post some snippets of tech stuff that I find intersting. Please feel free to reach out via the Contact page.
+image: ./images/welcome-blog.png
+alt: Person's hands at laptop computer
+---
+
+# Hello Astro World
+This is the first post of the blog.
+
+I have been learning Astro 🚀 and decided to build something using the `Content Collections` feature of Astro. 
+
+## Technology used on this blog
+- [Astro](https://astro.build/)
+- [Tailwindcss](https://tailwindcss.com) installed via `npx astro add tailwind`
+- Tailwind's typography via `@tailwindcss/typography`
+- MDX via `npx astro add mdx`
+- Astro Icons via `npx astro add astro-icon`
+
+
+## Content Collections
+I also used Astro's [Content Collections](https://docs.astro.build/en/guides/content-collections/#_top) It allows you to setup specific directories where you can store your `.md` or `.mdx` files (content).
+
+### Directory setup
+For the blog I used the following folder structure:
+```bash
+/src/
+└── content/
+    ├── posts/
+    │   ├── post1.mdx
+    │   ├── post2.mdx
+    │   └── etc.mdx
+    └── images/
+        ├── image1.png
+        ├── image2.png
+        └── etc.png
+
+```
+
+There is a bit of setup to map `href`s to the right location since I wanted the main blog path to be /blog/slug, so a lot of ``/blog/${post.slug}`` template literals work to get the links to all work like I wanted them.
+
+**All in all, I think it was a positive experience and really like Astro** Here's to more building...
