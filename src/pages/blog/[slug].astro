@@ -26,7 +26,7 @@ const { Content } = await post.render()
     class='prose prose-code:text-orange-400 px-10 max-w-sm md:max-w-xl lg:max-w-5xl text-xs md:text-sm lg:text-lg'
   >
     {
-      post.data.image && (
+      post.data.image && post.data.alt && (
         <Image src={post.data.image} alt={post.data.alt} format='webp' />
       )
     }

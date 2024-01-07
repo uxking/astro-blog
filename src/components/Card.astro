@@ -4,6 +4,7 @@ import { Image } from 'astro:assets'
 import { type CollectionEntry } from 'astro:content'
 import Tags from './Tags.astro'
 import { getShortDate } from '../utils/date_utils'
+
 interface Props {
   post: CollectionEntry<'posts'>
 }
@@ -30,11 +31,13 @@ const { post } = Astro.props
   </div>
   <div>
     {
-      post.data.image && (
+      post.data.image && post.data.alt && (
         <a href={`/blog/${post.slug}`}>
           <Image
             src={post.data.image}
             alt={post.data.alt}
+            width={1024}
+            height={640}
             format='webp'
             class='rounded-md mb-2 md:mb-4'
           />

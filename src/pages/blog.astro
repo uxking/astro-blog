@@ -7,13 +7,15 @@ import AllPosts from '../components/AllPosts.astro'
 // Requires the name of the collection as an argument.
 // Example: retrieve `src/content/blog/**`
 const allBlogPosts = await getCollection('posts')
+
 const sortedPosts = allBlogPosts.sort(
-  (a, b) => Date.parse(b.data.date) - Date.parse(a.data.date),
+  (a, b) =>
+    Date.parse(b.data.date.toString()) - Date.parse(a.data.date.toString()),
 )
 ---
 
 <Layout title='All Blog Posts'>
   <div class='mx-auto'>
-    <AllPosts posts={allBlogPosts} />
+    <AllPosts posts={sortedPosts} />
   </div>
 </Layout>
